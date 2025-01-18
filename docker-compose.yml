@@ -1,4 +1,14 @@
 services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: country-votes-backend
+    ports:
+      - "4041:3000"
+    networks:
+      - app-network
+
   frontend:
     build:
       context: ./frontend

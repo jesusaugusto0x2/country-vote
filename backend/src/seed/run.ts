@@ -5,7 +5,10 @@ import { SeedService } from './seed.service';
 async function runSeeds() {
   const app = await NestFactory.createApplicationContext(SeedModule);
   const seedService = app.get(SeedService);
+  console.log('🌱 Deleting all data...');
+  await seedService.deleteAll();
 
+  console.log('🌱 Seeding process started...');
   await seedService.seedAll();
 
   console.log('🌱 Seeding process completed!');

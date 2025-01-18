@@ -1,0 +1,23 @@
+{
+  "name": "country-vote",
+  "version": "1.0.0",
+  "description": "Loopstudio challenge app",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "docker compose up --build",
+    "stop": "docker compose down",
+    "db:migrate": "docker-compose exec backend npx prisma migrate dev",
+    "db:migrate:status": "docker-compose exec backend npx prisma migrate status",
+    "db:generate": "docker-compose exec backend npx prisma generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesusaugusto0x2/country-vote.git"
+  },
+  "author": "Jesus Varela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jesusaugusto0x2/country-vote/issues"
+  },
+  "homepage": "https://github.com/jesusaugusto0x2/country-vote#readme"
+}

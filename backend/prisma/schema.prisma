@@ -25,7 +25,7 @@ model Country {
 
 model Vote {
   id        String      @id @default(uuid())
-  userId    Int
-  countryId Int
+  userId    String
+  countryId String
   createdAt DateTime    @default(now())
 }

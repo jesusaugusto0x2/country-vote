@@ -1,0 +1,14 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: country-votes-frontend
+    ports:
+      - "3031:3000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -17,10 +17,10 @@ model User {
 
 model Country {
   id          String @id @default(uuid())
-  name        String                              
-  capitalCity String?                             
-  region      String?                          
-  subRegion   String?                              
+  name        String
+  capitalCity String?
+  region      String?
+  subRegion   String?
 }
 
 model Vote {

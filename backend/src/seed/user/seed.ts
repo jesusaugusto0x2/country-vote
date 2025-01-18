@@ -21,7 +21,6 @@ export class UserSeed {
         countryId: faker.helpers.arrayElement(countryIds),
       }));
 
-      // Insertar los usuarios en la base de datos
       await this.prisma.user.createMany({
         data: users,
       });

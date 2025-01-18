@@ -17,15 +17,15 @@ model User {
 
 model Country {
   id          String @id @default(uuid())
-  name        String                              
-  capitalCity String?                             
-  region      String?                          
-  subRegion   String?                              
+  name        String
+  capitalCity String?
+  region      String?
+  subRegion   String?
 }
 
 model Vote {
   id        String      @id @default(uuid())
-  userId    Int
-  countryId Int
+  userId    String
+  countryId String
   createdAt DateTime    @default(now())
 }

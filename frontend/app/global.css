@@ -1,0 +1,10 @@
+:root {
+  --font-inter-sans: "Inter", sans-serif;
+}
+
+body {
+  background: #f8f8f8;
+  font-family: var(--font-inter-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

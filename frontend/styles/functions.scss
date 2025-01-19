@@ -1,0 +1,3 @@
+@function spacing($val: 1) {
+  @return $val * 8px;
+}

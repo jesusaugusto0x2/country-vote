@@ -1,4 +1,5 @@
 import { TdHTMLAttributes } from "react";
+import styles from "./styles.module.scss";
 
 export type Column<T> = Omit<
   TdHTMLAttributes<HTMLTableCellElement>,
@@ -15,7 +16,7 @@ type Props<T> = {
 };
 
 export const Table = <T,>({ columns, data, indexKey }: Props<T>) => (
-  <table>
+  <table className={styles.Table}>
     <thead>
       <tr>
         {columns.map((column) => (

@@ -1,0 +1,21 @@
+@import "@/styles/functions.scss";
+@import "@/styles/variables.scss";
+
+.Table {
+  background-color: #fff;
+  border-radius: $border-radius;
+  padding: spacing(2);
+
+  th {
+    text-align: initial;
+    font-size: $fsize-medium;
+    font-weight: $fweight-bold;
+    padding: spacing(0.5);
+  }
+
+  td {
+    font-size: $fsize-large;
+    font-weight: $fweight-semibold;
+    padding: spacing(1.5) spacing(0.5);
+  }
+}

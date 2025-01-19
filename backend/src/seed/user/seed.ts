@@ -9,19 +9,13 @@ export class UserSeed {
   constructor(private readonly prisma: PrismaService) {}
 
   async seed() {
-    const countryIds = (await this.prisma.country.findMany()).map(
-      ({ id }) => id,
-    );
-
     try {
-      const users = Array.from({ length: 200 }).map(() => ({
+      const users = Array.from({ length: 500 }).map(() => ({
         name: faker.person.fullName(),
         email: faker.internet.email(),
         createdAt: faker.date.past(),
-        countryId: faker.helpers.arrayElement(countryIds),
       }));
 
-      // Insertar los usuarios en la base de datos
       await this.prisma.user.createMany({
         data: users,
       });

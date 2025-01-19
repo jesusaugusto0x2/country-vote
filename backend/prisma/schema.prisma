@@ -21,6 +21,7 @@ model Country {
   capitalCity String?
   region      String?
   subRegion   String?
+  votes       Vote[]
 }
 
 model Vote {
@@ -28,4 +29,6 @@ model Vote {
   userId    String
   countryId String
   createdAt DateTime    @default(now())
+
+  country   Country     @relation(fields: [countryId], references: [id])
 }

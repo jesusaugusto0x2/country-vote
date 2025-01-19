@@ -1,1 +1,1 @@
-export * from './country/country.dto';
+export * from './country';

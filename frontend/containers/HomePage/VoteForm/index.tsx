@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import { Button, TextInput } from "@/components";
+import { Button, SelectInput, TextInput } from "@/components";
 import { Country } from "@/models";
 import styles from "./styles.module.scss";
 
@@ -10,7 +10,10 @@ type Props = {
 };
 
 export const VoteForm: FC<Props> = ({ countries }) => {
-  console.log(countries);
+  const countryOptions = countries.map((country) => ({
+    value: country.id,
+    label: country.name,
+  }));
 
   return (
     <form className={styles.VoteForm}>
@@ -18,7 +21,7 @@ export const VoteForm: FC<Props> = ({ countries }) => {
       <div className={styles.inputs}>
         <TextInput type="text" placeholder="Name" />
         <TextInput type="email" placeholder="Email" />
-        <TextInput type="text" placeholder="Country" />
+        <SelectInput options={countryOptions} />
         <Button type="submit" disabled>
           Submit Vote
         </Button>

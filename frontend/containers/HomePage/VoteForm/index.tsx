@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { VoteFormSchema, ZVoteFormSchema } from "./schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useVoteSubmit } from "./useVoteSubmit";
+import Image from "next/image";
 
 type Props = {
   countries: Country[];
@@ -38,28 +39,46 @@ export const VoteForm: FC<Props> = ({ countries }) => {
   }));
 
   if (voted) {
-    return <h1>Voted!</h1>;
+    return (
+      <section className={styles.VoteFormContainer}>
+        <h4>
+          <Image
+            src="/assets/images/success-check-icon.svg"
+            alt="success-check"
+            width={24}
+            height={24}
+          />
+          Your vote was succesfully submitted
+        </h4>
+      </section>
+    );
   }
 
   if (error) {
-    return <h1>Failed to vote</h1>;
+    return (
+      <section className={styles.VoteFormContainer}>
+        <h4>An error has occurred, vote has not been submitted</h4>
+      </section>
+    );
   }
 
   return (
-    <form className={styles.VoteForm} onSubmit={handleSubmit(onSubmit)}>
+    <section className={styles.VoteFormContainer}>
       <h4>Vote your favourite country</h4>
-      <div className={styles.inputs}>
-        <TextInput {...register("userName")} type="text" placeholder="Name" />
-        <TextInput
-          {...register("userEmail")}
-          type="email"
-          placeholder="Email"
-        />
-        <SelectInput {...register("countryId")} options={countryOptions} />
-        <Button type="submit" disabled={!isValid || isLoading}>
-          Submit Vote
-        </Button>
-      </div>
-    </form>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.inputs}>
+          <TextInput {...register("userName")} type="text" placeholder="Name" />
+          <TextInput
+            {...register("userEmail")}
+            type="email"
+            placeholder="Email"
+          />
+          <SelectInput {...register("countryId")} options={countryOptions} />
+          <Button type="submit" disabled={!isValid || isLoading}>
+            Submit Vote
+          </Button>
+        </div>
+      </form>
+    </section>
   );
 };

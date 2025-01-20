@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { VoteFormSchema } from "./schema";
+import { useRouter } from "next/navigation";
 
 export const useVoteSubmit = () => {
+  const router = useRouter();
+
   const [isLoading, setIsLoading] = useState(false);
   const [voted, setVoted] = useState(false);
   const [error, setError] = useState(false);
@@ -29,6 +32,7 @@ export const useVoteSubmit = () => {
 
       setIsLoading(false);
       setVoted(true);
+      router.refresh();
     } catch (e) {
       console.error("Error submitting vote", e);
       setError(true);

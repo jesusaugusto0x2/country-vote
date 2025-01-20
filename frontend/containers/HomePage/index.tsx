@@ -2,6 +2,7 @@ import { FC } from "react";
 import styles from "./styles.module.scss";
 import { TableSection } from "./TableSection";
 import { SearchSection } from "./SearchSection";
+import { VoteForm } from "./VoteForm";
 
 type Props = {
   search: string;
@@ -10,6 +11,7 @@ type Props = {
 export const HomePage: FC<Props> = ({ search }) => {
   return (
     <div className={styles.HomePage}>
+      <VoteForm />
       <h1>Top 10 Most Voted Countries</h1>
       <SearchSection defaultSearch={search} />
       <TableSection query={search} />

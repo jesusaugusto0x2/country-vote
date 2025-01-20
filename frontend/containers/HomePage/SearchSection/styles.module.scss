@@ -1,5 +1,13 @@
+@use "@/styles/breakpoints" as bpoints;
+
 .SearchSection {
   input {
-    min-width: 417px;
+    min-width: 100%;
+  }
+
+  @include bpoints.media-query(medium) {
+    input {
+      min-width: 417px;
+    }
   }
 }

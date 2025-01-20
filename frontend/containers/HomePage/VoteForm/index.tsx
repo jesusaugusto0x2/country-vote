@@ -73,7 +73,14 @@ export const VoteForm: FC<Props> = ({ countries }) => {
             type="email"
             placeholder="Email"
           />
-          <SelectInput {...register("countryId")} options={countryOptions} />
+          <SelectInput
+            {...register("countryId")}
+            options={countryOptions}
+            disabledOption={{
+              value: "",
+              label: "Select country",
+            }}
+          />
           <Button type="submit" disabled={!isValid || isLoading}>
             Submit Vote
           </Button>

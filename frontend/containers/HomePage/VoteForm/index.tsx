@@ -38,6 +38,14 @@ export const VoteForm: FC<Props> = ({ countries }) => {
     label: country.name,
   }));
 
+  if (error) {
+    return (
+      <section className={styles.VoteFormContainer}>
+        <h4>{error}</h4>
+      </section>
+    );
+  }
+
   if (voted) {
     return (
       <section className={styles.VoteFormContainer}>
@@ -50,14 +58,6 @@ export const VoteForm: FC<Props> = ({ countries }) => {
           />
           Your vote was succesfully submitted
         </h4>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section className={styles.VoteFormContainer}>
-        <h4>An error has occurred, vote has not been submitted</h4>
       </section>
     );
   }

@@ -7,7 +7,7 @@ export const useVoteSubmit = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [voted, setVoted] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const onVoteSubmit = async (data: VoteFormSchema) => {
     setIsLoading(true);
@@ -27,17 +27,21 @@ export const useVoteSubmit = () => {
       const resp = await fetch(request);
 
       if (!resp.ok) {
-        throw new Error("Failed to submit vote");
+        const error = await resp.json();
+        setError(error.message || "Unknown error courred");
+        setIsLoading(false);
+        return;
       }
 
       setIsLoading(false);
       setVoted(true);
       router.refresh();
     } catch (e) {
-      console.error("Error submitting vote", e);
-      setError(true);
+      setError(
+        "A network error occurred. Please reload the page to try again."
+      );
       setIsLoading(false);
-      throw e;
+      console.error("Error submitting vote", e);
     }
   };
 

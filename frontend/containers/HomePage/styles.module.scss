@@ -12,6 +12,6 @@
   }
 
   @include bpoints.media-query(medium) {
-    padding: functions.spacing(4) functions.spacing(8);
+    padding: functions.spacing(2) functions.spacing(8);
   }
 }

@@ -8,10 +8,23 @@ export class CountriesService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getAllCountries(): Promise<Country[]> {
-    return this.prisma.country.findMany();
+    return this.prisma.country.findMany({
+      orderBy: {
+        name: 'asc',
+      },
+    });
   }
 
   async getCountriesWithVotes(search?: string): Promise<CountryWithVotes[]> {
+    const orFilters = ['name', 'capitalCity', 'region', 'subRegion'].map(
+      (key) => ({
+        [key]: {
+          contains: search,
+          mode: 'insensitive',
+        },
+      }),
+    );
+
     return this.prisma.country.findMany({
       take: 10,
       select: {
@@ -32,10 +45,7 @@ export class CountriesService {
         },
       },
       where: {
-        name: {
-          contains: search,
-          mode: 'insensitive',
-        },
+        OR: orFilters,
       },
     });
   }

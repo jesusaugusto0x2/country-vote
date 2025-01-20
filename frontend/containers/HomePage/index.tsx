@@ -20,6 +20,7 @@ const fetchData = async (): Promise<Country[]> => {
     return [];
   }
 };
+
 type Props = {
   search: string;
 };

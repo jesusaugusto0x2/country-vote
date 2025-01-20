@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import styles from "./styles.module.scss";
-import { TextInput } from "@/components";
+import { Button, TextInput } from "@/components";
 
 export const VoteForm: FC = () => {
   return (
@@ -12,6 +12,9 @@ export const VoteForm: FC = () => {
         <TextInput type="text" placeholder="Name" />
         <TextInput type="email" placeholder="Email" />
         <TextInput type="text" placeholder="Country" />
+        <Button type="submit" disabled>
+          Submit Vote
+        </Button>
       </div>
     </form>
   );

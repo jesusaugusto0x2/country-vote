@@ -1,0 +1,27 @@
+@use "@/styles/functions" as functions;
+@use "@/styles/variables" as vars;
+
+.Button {
+  background: vars.$black;
+  border: none;
+  border-radius: vars.$border-radius;
+  color: vars.$white;
+  font-size: vars.$fsize-medium;
+  font-weight: vars.$fweight-bold;
+  padding: functions.spacing(1) functions.spacing(2);
+
+  &:hover {
+    cursor: pointer;
+    filter: sepia(0.5) brightness(1.5) opacity(0.5);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: vars.$gray;
+    color: vars.$dark-gray;
+
+    &:hover {
+      filter: none;
+    }
+  }
+}

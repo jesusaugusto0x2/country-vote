@@ -1,12 +1,17 @@
 @use "@/styles/functions.scss" as functions;
+@use "@/styles/breakpoints.scss" as bpoints;
 
 .HomePage {
   display: flex;
   flex-direction: column;
-  padding: functions.spacing(2) functions.spacing(8);
+  padding: functions.spacing(2);
   gap: functions.spacing(2);
 
   h1 {
     margin: 0;
+  }
+
+  @include bpoints.media-query(medium) {
+    padding: functions.spacing(2) functions.spacing(8);
   }
 }

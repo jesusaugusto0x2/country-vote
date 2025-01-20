@@ -16,22 +16,24 @@ type Props<T> = {
 };
 
 export const Table = <T,>({ columns, data, indexKey }: Props<T>) => (
-  <table className={styles.Table}>
-    <thead>
-      <tr>
-        {columns.map((column) => (
-          <th key={String(column.key)}>{column.title}</th>
-        ))}
-      </tr>
-    </thead>
-    <tbody>
-      {data.map((row) => (
-        <tr key={String(row[indexKey])}>
+  <div className={styles.TableContainer}>
+    <table className={styles.Table}>
+      <thead>
+        <tr>
           {columns.map((column) => (
-            <td key={String(column.key)}>{String(row[column.key])}</td>
+            <th key={String(column.key)}>{column.title}</th>
           ))}
         </tr>
-      ))}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {data.map((row) => (
+          <tr key={String(row[indexKey])}>
+            {columns.map((column) => (
+              <td key={String(column.key)}>{String(row[column.key])}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 );

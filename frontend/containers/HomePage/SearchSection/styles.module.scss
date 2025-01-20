@@ -1,15 +1,13 @@
+@use "@/styles/breakpoints" as bpoints;
+
 .SearchSection {
-  img {
-    position: relative;
-    top: 8px;
-    left: 6px;
-    z-index: 100;
+  input {
+    min-width: 100%;
   }
 
-  input {
-    position: relative;
-    left: -25px;
-    min-width: 417px;
-    padding-left: 40px;
+  @include bpoints.media-query(medium) {
+    input {
+      min-width: 417px;
+    }
   }
 }

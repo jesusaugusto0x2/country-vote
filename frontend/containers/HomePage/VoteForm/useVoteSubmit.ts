@@ -28,7 +28,7 @@ export const useVoteSubmit = () => {
 
       if (!resp.ok) {
         const error = await resp.json();
-        setError(error.message || "Unknown error courred");
+        setError(error.message || "Unknown error ocurred");
         setIsLoading(false);
         return;
       }

@@ -1,0 +1,36 @@
+@use "@/styles/functions" as functions;
+@use "@/styles/variables" as vars;
+
+.VoteFormContainer {
+  display: flex;
+  flex-direction: column;
+  border-radius: vars.$border-radius;
+  background: vars.$white;
+  padding: functions.spacing(2);
+  gap: functions.spacing(2);
+  margin-bottom: functions.spacing(4);
+
+  form {
+    padding-bottom: functions.spacing(2);
+  }
+
+  h4 {
+    display: flex;
+    align-items: center;
+    gap: functions.spacing(1);
+    margin: 0;
+  }
+
+  .inputs {
+    display: flex;
+    gap: functions.spacing(2);
+
+    & > input {
+      width: 100%;
+    }
+
+    & > button {
+      min-width: 120px;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@use "@/styles/functions.scss" as functions;
+@use "@/styles/variables.scss" as variables;
+
+@mixin inputClass {
+  padding: functions.spacing(1);
+  background-color: variables.$light-gray;
+  border-radius: variables.$border-radius;
+  border: 2px solid variables.$gray;
+  font-size: variables.$fsize-medium;
+  font-weight: variables.$fweight-semibold;
+}

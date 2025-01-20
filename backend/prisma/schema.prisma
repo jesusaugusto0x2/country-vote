@@ -12,6 +12,8 @@ model User {
   name      String
   email     String   @unique
   createdAt DateTime @default(now())
+
+  votes     Vote[]
 }
 
 model Country {
@@ -29,5 +31,6 @@ model Vote {
   countryId String
   createdAt DateTime    @default(now())
 
+  user      User     @relation(fields: [userId], references: [id])
   country   Country     @relation(fields: [countryId], references: [id])
 }

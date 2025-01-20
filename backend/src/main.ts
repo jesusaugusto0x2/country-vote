@@ -6,6 +6,8 @@ import { patchNestJsSwagger } from 'nestjs-zod';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('Loopstudio Countries')
     .setDescription('Small API to vote for your favorite country')

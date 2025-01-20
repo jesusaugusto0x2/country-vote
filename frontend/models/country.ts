@@ -4,5 +4,14 @@ export type Country = {
   capitalCity: string;
   region: string;
   subRegion: string;
+};
+
+export type CountryWithVote = Country & {
+  _count: {
+    votes: number;
+  };
+};
+
+export type TableCountry = Country & {
   votes: number;
 };

@@ -2,6 +2,7 @@
 
 import { Column, Table } from "@/components";
 import { CountryWithVote, TableCountry } from "@/models";
+import { FC } from "react";
 
 const fetchData = async (query: string): Promise<TableCountry[]> => {
   try {
@@ -13,9 +14,9 @@ const fetchData = async (query: string): Promise<TableCountry[]> => {
       throw new Error("Failed to fetch data");
     }
 
-    const countries = await resp.json();
+    const countries: CountryWithVote[] = await resp.json();
 
-    return countries.map((c: CountryWithVote) => ({
+    return countries.map((c) => ({
       id: c.id,
       name: c.name,
       capitalCity: c.capitalCity ?? "-",
@@ -37,7 +38,11 @@ const columns: Column<TableCountry>[] = [
   { title: "Votes", key: "votes" },
 ];
 
-export const TableSection = async ({ query }: { query: string }) => {
+type Props = {
+  query: string;
+};
+
+export const TableSection: FC<Props> = async ({ query }) => {
   const data = await fetchData(query);
 
   return <Table indexKey="id" columns={columns} data={data} />;

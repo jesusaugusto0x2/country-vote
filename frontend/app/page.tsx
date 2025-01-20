@@ -1,13 +1,17 @@
 import { Navbar } from "@/components/Navbar";
 import { HomePage } from "@/containers";
 
-export default function Home() {
+export default async function Home(props: {
+  readonly searchParams: Promise<{ readonly search?: string }>;
+}) {
+  const searchParams = await props.searchParams;
+
   return (
     <main>
       <header>
         <Navbar />
       </header>
-      <HomePage />
+      <HomePage search={searchParams.search ?? ""} />
     </main>
   );
 }

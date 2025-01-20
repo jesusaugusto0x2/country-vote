@@ -1,0 +1,13 @@
+@use "@/styles/functions.scss" as functions;
+@use "@/styles/variables.scss" as variables;
+
+.TextInput {
+  padding: functions.spacing(1);
+  background-color: variables.$light-gray;
+  border-radius: variables.$border-radius;
+  border: 2px solid variables.$gray;
+
+  &::placeholder {
+    color: variables.$dark-gray;
+  }
+}

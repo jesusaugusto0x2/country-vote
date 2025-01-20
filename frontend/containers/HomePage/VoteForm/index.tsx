@@ -7,6 +7,7 @@ import styles from "./styles.module.scss";
 import { useForm } from "react-hook-form";
 import { VoteFormSchema, ZVoteFormSchema } from "./schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useVoteSubmit } from "./useVoteSubmit";
 
 type Props = {
   countries: Country[];
@@ -27,14 +28,22 @@ export const VoteForm: FC<Props> = ({ countries }) => {
     resolver: zodResolver(ZVoteFormSchema),
   });
 
-  const onSubmit = async (data: VoteFormSchema) => {
-    console.log(data);
-  };
+  const { isLoading, voted, error, onVoteSubmit } = useVoteSubmit();
+
+  const onSubmit = async (data: VoteFormSchema) => onVoteSubmit(data);
 
   const countryOptions = countries.map((country) => ({
     value: country.id,
     label: country.name,
   }));
+
+  if (voted) {
+    return <h1>Voted!</h1>;
+  }
+
+  if (error) {
+    return <h1>Failed to vote</h1>;
+  }
 
   return (
     <form className={styles.VoteForm} onSubmit={handleSubmit(onSubmit)}>
@@ -47,7 +56,7 @@ export const VoteForm: FC<Props> = ({ countries }) => {
           placeholder="Email"
         />
         <SelectInput {...register("countryId")} options={countryOptions} />
-        <Button type="submit" disabled={!isValid}>
+        <Button type="submit" disabled={!isValid || isLoading}>
           Submit Vote
         </Button>
       </div>

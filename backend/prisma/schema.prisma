@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -22,7 +22,10 @@ model Country {
   capitalCity String?
   region      String?
   subRegion   String?
+
   votes       Vote[]
+
+  @@index([name])
 }
 
 model Vote {

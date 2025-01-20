@@ -20,13 +20,14 @@ const fetchData = async (): Promise<Country[]> => {
     return [];
   }
 };
+
 type Props = {
   search: string;
 };
 
 export const HomePage: FC<Props> = async ({ search }) => {
   const countries = await fetchData();
-
+  console.log({ countries });
   return (
     <div className={styles.HomePage}>
       <VoteForm countries={countries} />

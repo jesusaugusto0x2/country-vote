@@ -1,10 +1,17 @@
 "use client";
 
 import { FC } from "react";
-import styles from "./styles.module.scss";
 import { Button, TextInput } from "@/components";
+import { Country } from "@/models";
+import styles from "./styles.module.scss";
 
-export const VoteForm: FC = () => {
+type Props = {
+  countries: Country[];
+};
+
+export const VoteForm: FC<Props> = ({ countries }) => {
+  console.log(countries);
+
   return (
     <form className={styles.VoteForm}>
       <h4>Vote your favourite country</h4>

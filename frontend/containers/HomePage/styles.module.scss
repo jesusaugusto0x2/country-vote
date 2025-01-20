@@ -1,4 +1,11 @@
+@use "@/styles/functions.scss" as functions;
+
 .HomePage {
   display: flex;
   flex-direction: column;
+  padding: functions.spacing(2) functions.spacing(8);
+
+  h1 {
+    margin: 0;
+  }
 }

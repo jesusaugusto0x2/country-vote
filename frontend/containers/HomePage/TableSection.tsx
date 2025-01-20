@@ -13,9 +13,9 @@ const fetchData = async (query: string): Promise<TableCountry[]> => {
       throw new Error("Failed to fetch data");
     }
 
-    const countries = await resp.json();
+    const countries: CountryWithVote[] = await resp.json();
 
-    return countries.map((c: CountryWithVote) => ({
+    return countries.map((c) => ({
       id: c.id,
       name: c.name,
       capitalCity: c.capitalCity ?? "-",

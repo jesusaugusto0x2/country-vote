@@ -29,12 +29,6 @@ export const SearchSection: FC<Props> = ({ defaultSearch }) => {
 
   return (
     <section className={styles.SearchSection}>
-      <Image
-        src="/assets/images/search-icon.svg"
-        alt="search-icon"
-        width={24}
-        height={24}
-      />
       <TextInput
         type="search"
         placeholder="Search Country, Capital City, Region or Subregion"

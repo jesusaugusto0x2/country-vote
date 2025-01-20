@@ -1,18 +1,15 @@
 @use "@/styles/functions" as functions;
 @use "@/styles/variables" as vars;
+@use "@/styles/breakpoints" as bpoints;
 
 .VoteFormContainer {
   display: flex;
   flex-direction: column;
-  border-radius: vars.$border-radius;
   background: vars.$white;
+  border-radius: vars.$border-radius;
   padding: functions.spacing(2);
   gap: functions.spacing(2);
   margin-bottom: functions.spacing(4);
-
-  form {
-    padding-bottom: functions.spacing(2);
-  }
 
   h4 {
     display: flex;
@@ -21,16 +18,27 @@
     margin: 0;
   }
 
-  .inputs {
-    display: flex;
-    gap: functions.spacing(2);
+  form {
+    padding-bottom: functions.spacing(2);
 
-    & > input {
-      width: 100%;
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      gap: functions.spacing(2);
+
+      & > button {
+        min-width: 120px;
+      }
     }
+  }
 
-    & > button {
-      min-width: 120px;
+  @include bpoints.media-query(medium) {
+    form > .inputs {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns:
+        repeat(3, minmax(120px, 1fr))
+        120px;
     }
   }
 }

@@ -27,7 +27,7 @@ type Props = {
 
 export const HomePage: FC<Props> = async ({ search }) => {
   const countries = await fetchData();
-  console.log({ countries });
+
   return (
     <div className={styles.HomePage}>
       <VoteForm countries={countries} />

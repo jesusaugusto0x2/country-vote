@@ -1,16 +1,31 @@
 "use client";
 
 import { TextInput } from "@/components";
-import { FC, useState } from "react";
+import { useDebounce } from "@/hooks/useDebounce";
+import { useRouter } from "next/navigation";
+import { FC, useEffect, useState } from "react";
 
-export const SearchSection: FC = () => {
-  const [search, setSearch] = useState("");
+type Props = {
+  defaultSearch: string;
+};
 
-  const handleKeyPress = (e: any) => {
-    if (e.key === "Enter") {
-      window.location.search = `?search=${search}`;
+export const SearchSection: FC<Props> = ({ defaultSearch }) => {
+  const [search, setSearch] = useState(defaultSearch);
+
+  const router = useRouter();
+  const debouncedSearch = useDebounce(search);
+
+  useEffect(() => {
+    const currentParams = new URLSearchParams(window.location.search);
+    const currentSearch = currentParams.get("search") ?? "";
+
+    console.log(currentParams);
+
+    if (debouncedSearch !== currentSearch) {
+      currentParams.set("search", debouncedSearch);
+      router.replace(`/?${currentParams.toString()}`);
     }
-  };
+  }, [debouncedSearch, router]);
 
   return (
     <section>
@@ -19,7 +34,6 @@ export const SearchSection: FC = () => {
         placeholder="Search Country, Capital City, Region or Subregion"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        onKeyDown={handleKeyPress}
       />
     </section>
   );

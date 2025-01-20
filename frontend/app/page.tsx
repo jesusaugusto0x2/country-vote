@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { HomePage } from "@/containers";
 
-export default function Home({
+export default async function Home({
   searchParams,
 }: {
   readonly searchParams: { readonly search?: string };
